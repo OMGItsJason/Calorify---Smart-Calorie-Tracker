@@ -44,6 +44,8 @@
 		"vitest": "^2.0.4"
 	},
 	"dependencies": {
+		"@fontsource/ibm-plex-sans": "^5.1.1",
+		"@fontsource/ibm-plex-sans-condensed": "^5.1.1",
 		"@sveltejs/enhanced-img": "^0.4.4",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.9",

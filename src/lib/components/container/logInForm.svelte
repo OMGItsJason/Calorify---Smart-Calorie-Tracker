@@ -8,19 +8,25 @@
 	import { logInSchema } from '@/config/zodSchema';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import toast, { Toaster } from 'svelte-french-toast';
 
 	export let data;
 
 	export const form = superForm(data.form, {
 		validators: zodClient(logInSchema),
 		async onResult({ result }) {
-			console.log(result);
+			if (result.type === 'error') {
+				toast.error(result.error.message);
+			} else if (result.type === 'success') {
+				toast.success('Login successful!');
+			}
 		}
 	});
 
 	const { form: formData, enhance } = form;
 </script>
 
+<Toaster />
 <Card.Root>
 	<Card.Header class="flex items-center text-center font-sansSerif text-2xl">
 		<Card.Title>

@@ -3,11 +3,10 @@
 	import { onDestroy, onMount } from 'svelte';
 	import Form from '@/components/container/logInForm.svelte';
 	import type { PageData } from './$types';
-
-	export let data: PageData;
+	let { data }: { data: PageData } = $props();
 
 	let splashTimer: number;
-	let showSplash: boolean = true;
+	let showSplash: boolean = $state(true);
 
 	onMount(() => {
 		splashTimer = setInterval(() => {
@@ -21,7 +20,7 @@
 </script>
 
 {#if showSplash}
-	<svelte:component this={SplashScreen} />
+	<SplashScreen />
 {:else}
 	<div
 		class="bg-custom-gradient flex h-svh w-svw items-center justify-center px-5 md:space-x-24 md:px-16"
